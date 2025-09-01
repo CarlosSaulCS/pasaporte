@@ -5,11 +5,14 @@ import TravelGallery from './components/TravelGallery'
 import SpanishLessons from './components/SpanishLessons'
 import FormulaOneGuide from './components/FormulaOneGuide'
 import Navigation from './components/Navigation'
+import LanguageToggle from './components/LanguageToggle'
+import { useLanguage } from './contexts/LanguageContext'
 
 type Section = 'flowers' | 'travel' | 'spanish' | 'f1'
 
 function App() {
   const [activeSection, setActiveSection] = useState<Section>('flowers')
+  const { t } = useLanguage()
 
   const renderSection = () => {
     switch (activeSection) {
@@ -29,9 +32,12 @@ function App() {
   return (
     <div className="app">
       <header className="app-header">
+        <div className="language-controls">
+          <LanguageToggle />
+        </div>
         <div className="romantic-backdrop">
-          <h1 className="main-title">Para Evita Romanovna 💕</h1>
-          <p className="subtitle">Una sorpresa digital desde México</p>
+          <h1 className="main-title">{t('header.title')} 💕</h1>
+          <p className="subtitle">{t('header.subtitle')}</p>
         </div>
       </header>
       
@@ -42,7 +48,7 @@ function App() {
       </main>
       
       <footer className="app-footer">
-        <p>Hecho con cariño ❤️ para una persona muy especial</p>
+        <p>Made with love ❤️ for a very special person</p>
       </footer>
     </div>
   )

@@ -1,22 +1,18 @@
 import { useState } from 'react'
+import { useLanguage } from '../contexts/LanguageContext'
 
 const DigitalFlowers = () => {
   const [flowerCount, setFlowerCount] = useState(1)
   const [showMessage, setShowMessage] = useState(false)
-
-  const messages = [
-    "Me encantan las flores que le gustan a Evita...",
-    "Rosas y flores rojas, como su personalidad vibrante",
-    "Desde México, con admiración y cariño",
-    "Cada flor representa lo especial que eres",
-    "Espero algún día poder regalarte flores reales"
-  ]
+  const [messageIndex, setMessageIndex] = useState(0)
+  const { t } = useLanguage()
 
   const createFlower = () => {
     if (flowerCount < 10) {
       setFlowerCount(prev => prev + 1)
-      if (flowerCount === 5) {
+      if (flowerCount >= 3) {
         setShowMessage(true)
+        setMessageIndex(Math.floor(Math.random() * 5) + 1)
       }
     }
   }
@@ -29,8 +25,8 @@ const DigitalFlowers = () => {
   return (
     <div className="digital-flowers">
       <div className="flowers-header">
-        <h2>🌹 Jardín Digital Para Evita 🌹</h2>
-        <p>Haz clic en el jardín para hacer crecer más flores</p>
+        <h2>{t('flowers.title')}</h2>
+        <p>{t('flowers.subtitle')}</p>
       </div>
 
       <div className="flower-garden" onClick={createFlower}>
@@ -60,31 +56,28 @@ const DigitalFlowers = () => {
       {showMessage && (
         <div className="love-messages">
           <div className="message-container">
-            {messages.map((message, index) => (
-              <div
-                key={index}
-                className="love-message"
-                style={{ animationDelay: `${index * 1.5}s` }}
-              >
-                {message}
-              </div>
-            ))}
+            <div
+              className="love-message"
+              style={{ animationDelay: '0.5s' }}
+            >
+              {t(`flowers.message${messageIndex}`)}
+            </div>
           </div>
         </div>
       )}
 
       <div className="flower-controls">
         <button onClick={createFlower} className="grow-btn" disabled={flowerCount >= 10}>
-          Hacer Crecer Flores 🌸
+          Grow Flowers 🌸
         </button>
         <button onClick={resetFlowers} className="reset-btn">
-          Nuevo Jardín 🌱
+          New Garden 🌱
         </button>
       </div>
 
       <div className="romantic-quote">
-        <p>"Como dijo Pablo Neruda: 'Es tan corto el amor, y es tan largo el olvido'"</p>
-        <p>Me encantaría conocerte en persona y regalarte flores reales algún día 💕</p>
+        <p>"As Pablo Neruda said: 'Love is so short, forgetting is so long'"</p>
+        <p>I would love to meet you in person and give you real flowers someday 💕</p>
       </div>
     </div>
   )
