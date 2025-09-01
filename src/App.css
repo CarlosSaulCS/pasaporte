@@ -20,17 +20,32 @@
   box-sizing: border-box;
 }
 
+html {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
 body {
   font-family: 'Poppins', sans-serif;
   background: linear-gradient(135deg, #FDF2E9 0%, #FFB5D6 50%, #AED6F1 100%);
   min-height: 100vh;
   color: var(--deep-blue);
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 .app {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
 
 /* Language Toggle Styles */
@@ -133,26 +148,31 @@ body {
 
 /* Header Styles */
 .app-header {
-  padding: clamp(1rem, 4vw, 2rem) 0;
+  padding: clamp(0.5rem, 2vw, 1rem) 0;
   text-align: center;
   position: relative;
   overflow: hidden;
+  width: 100%;
+  margin: 0;
 }
 
 .header-content {
   position: relative;
   width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 .romantic-backdrop {
   position: relative;
   z-index: 2;
-  padding: clamp(1.5rem, 4vw, 2rem);
+  padding: clamp(1rem, 3vw, 1.5rem);
   background: rgba(255, 255, 255, 0.9);
-  border-radius: 20px;
-  margin: 0 clamp(1rem, 4vw, 2rem);
+  border-radius: 15px;
+  margin: 0 clamp(0.5rem, 2vw, 1rem);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(10px);
+  max-width: calc(100% - clamp(1rem, 4vw, 2rem));
 }
 
 .main-title {
@@ -180,17 +200,20 @@ body {
 
 /* Navigation Styles */
 .navigation {
-  padding: clamp(1rem, 3vw, 2rem);
+  padding: clamp(0.5rem, 2vw, 1.5rem);
   display: flex;
   justify-content: center;
+  width: 100%;
 }
 
 .nav-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: clamp(0.8rem, 2vw, 1rem);
-  max-width: 900px;
+  grid-template-columns: repeat(auto-fit, minmax(clamp(150px, 20vw, 220px), 1fr));
+  gap: clamp(0.5rem, 1.5vw, 1rem);
   width: 100%;
+  max-width: none;
+  padding: 0 clamp(0.5rem, 2vw, 1rem);
+  margin: 0;
 }
 
 .nav-item {
@@ -250,19 +273,26 @@ body {
 /* Main Content */
 .app-content {
   flex: 1;
-  padding: clamp(1rem, 3vw, 2rem);
-  max-width: 1200px;
-  margin: 0 auto;
+  padding: 0;
   width: 100%;
+  min-height: calc(100vh - 200px);
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  overflow-x: hidden;
 }
 
 /* Digital Flowers Styles */
-/* Digital Flowers Styles - Completely redesigned */
 .digital-flowers {
   text-align: center;
-  padding: 1rem;
-  max-width: 1000px;
-  margin: 0 auto;
+  padding: clamp(0.5rem, 2vw, 1rem);
+  width: 100%;
+  height: 100%;
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0;
 }
 
 .flowers-header h2 {
@@ -279,18 +309,19 @@ body {
 }
 
 .flower-garden {
-  min-height: clamp(250px, 50vw, 400px);
+  min-height: clamp(300px, 60vh, 500px);
+  width: 100%;
   background: linear-gradient(to bottom, #87CEEB 0%, #98FB98 30%, #90EE90 100%);
   border-radius: 20px;
   position: relative;
   cursor: pointer;
-  margin: 2rem auto;
+  margin: clamp(1rem, 3vw, 2rem) 0;
   overflow: hidden;
   box-shadow: 
     inset 0 0 50px rgba(0, 0, 0, 0.1),
     0 10px 30px rgba(0, 0, 0, 0.2);
-  max-width: 100%;
   transition: transform 0.3s ease;
+  flex: 1;
 }
 
 .flower-garden:hover {
@@ -598,6 +629,12 @@ body {
 /* Travel Gallery Styles */
 .travel-gallery {
   text-align: center;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(0.5rem, 2vw, 1rem);
+  margin: 0;
 }
 
 .gallery-header h2 {
@@ -656,12 +693,14 @@ body {
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  max-width: 600px;
+  width: 100%;
+  max-width: min(90vw, 800px);
   margin: 0 auto;
 }
 
 .destination-image {
-  height: 300px;
+  height: clamp(250px, 40vh, 400px);
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -745,8 +784,12 @@ body {
 
 /* Spanish Lessons Styles */
 .spanish-lessons {
-  max-width: 800px;
-  margin: 0 auto;
+  width: 100%;
+  min-height: 100vh;
+  padding: clamp(0.5rem, 2vw, 1rem);
+  display: flex;
+  flex-direction: column;
+  margin: 0;
 }
 
 .lessons-header h2 {
@@ -780,9 +823,11 @@ body {
 .lesson-card {
   background: rgba(255, 255, 255, 0.9);
   border-radius: 20px;
-  padding: 2rem;
+  padding: clamp(1.5rem, 4vw, 2rem);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  margin: 2rem 0;
+  margin: 2rem auto;
+  width: 100%;
+  max-width: min(90vw, 800px);
 }
 
 .category-tag {
@@ -938,8 +983,12 @@ body {
 
 /* Formula One Styles */
 .formula-one-guide {
-  max-width: 900px;
-  margin: 0 auto;
+  width: 100%;
+  min-height: 100vh;
+  padding: clamp(0.5rem, 2vw, 1rem);
+  display: flex;
+  flex-direction: column;
+  margin: 0;
 }
 
 .f1-header h2 {
@@ -952,9 +1001,10 @@ body {
 
 .topic-selector {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(clamp(180px, 25vw, 250px), 1fr));
+  gap: clamp(1rem, 3vw, 1.5rem);
   margin: 2rem 0;
+  width: 100%;
 }
 
 .topic-btn {
@@ -982,9 +1032,11 @@ body {
 .topic-content {
   background: rgba(255, 255, 255, 0.9);
   border-radius: 20px;
-  padding: 2rem;
+  padding: clamp(1.5rem, 4vw, 2rem);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  margin: 2rem 0;
+  margin: 2rem auto;
+  width: 100%;
+  max-width: min(90vw, 900px);
 }
 
 .content-sections {
@@ -1096,31 +1148,35 @@ body {
   .nav-container {
     grid-template-columns: 1fr;
     gap: 0.8rem;
+    padding: 0 1rem;
   }
   
   .nav-item {
-    padding: 1rem;
+    padding: clamp(0.8rem, 3vw, 1.2rem);
   }
   
   .flower-garden {
-    min-height: 200px;
-    margin: 1rem auto;
+    min-height: 50vh;
+    margin: 1rem 0;
+    width: 100%;
   }
   
   .flower-controls {
     flex-direction: column;
     align-items: center;
     gap: 0.8rem;
+    width: 100%;
   }
   
   .grow-btn, .reset-btn {
     width: 100%;
-    max-width: 250px;
+    max-width: 280px;
   }
   
   .practice-input {
     flex-direction: column;
     gap: 0.8rem;
+    width: 100%;
   }
   
   .answer-input {
@@ -1132,6 +1188,7 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 0.8rem;
+    width: 100%;
   }
   
   .nav-btn {
@@ -1141,60 +1198,68 @@ body {
   
   .destination-selector {
     grid-template-columns: repeat(2, 1fr);
-    gap: 0.5rem;
+    gap: 0.8rem;
+    width: 100%;
   }
   
   .topic-selector {
     grid-template-columns: 1fr;
     gap: 0.8rem;
+    width: 100%;
   }
   
   .facts-grid {
     grid-template-columns: 1fr;
     gap: 0.8rem;
+    width: 100%;
   }
   
   .romantic-backdrop {
-    margin: 0 1rem;
-    padding: 1.5rem;
+    margin: 0;
+    padding: clamp(1rem, 4vw, 1.5rem);
+    width: 100%;
   }
   
   .app-content {
-    padding: 1rem;
+    padding: clamp(0.5rem, 2vw, 1rem);
+    width: 100%;
   }
 }
 
 @media (max-width: 480px) {
   .flower-garden {
-    min-height: 150px;
+    min-height: 40vh;
   }
   
   .destination-selector {
     grid-template-columns: 1fr;
+    gap: 0.6rem;
   }
   
   .romantic-backdrop {
-    margin: 0 0.5rem;
-    padding: 1rem;
+    margin: 0;
+    padding: clamp(0.5rem, 3vw, 1rem);
   }
   
   .love-message {
-    padding: 1rem;
+    padding: clamp(0.8rem, 3vw, 1rem);
     margin: 0.5rem 0;
   }
   
   .romantic-quote {
-    padding: 1rem;
+    padding: clamp(0.8rem, 3vw, 1rem);
     margin: 1rem 0;
   }
 }
 
 @media (min-width: 1200px) {
   .flower-garden {
-    max-width: 900px;
+    max-width: none;
+    width: 100%;
   }
   
   .app-content {
-    padding: 3rem;
+    padding: clamp(2rem, 5vw, 3rem);
+    width: 100%;
   }
 }
