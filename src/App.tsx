@@ -32,12 +32,14 @@ function App() {
   return (
     <div className="app">
       <header className="app-header">
-        <div className="language-controls">
-          <LanguageToggle />
-        </div>
-        <div className="romantic-backdrop">
-          <h1 className="main-title">{t('header.title')} 💕</h1>
-          <p className="subtitle">{t('header.subtitle')}</p>
+        <div className="header-content">
+          <div className="language-controls">
+            <LanguageToggle />
+          </div>
+          <div className="romantic-backdrop">
+            <h1 className="main-title">{t('header.title')} 💕</h1>
+            <p className="subtitle">{t('header.subtitle')}</p>
+          </div>
         </div>
       </header>
       
