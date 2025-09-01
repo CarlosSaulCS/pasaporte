@@ -7,6 +7,7 @@ const TravelGallery = () => {
     crete: {
       name: 'Creta, Grecia 🇬🇷',
       description: 'Tu lugar favorito en el mundo',
+      image: '/grece.png',
       memories: [
         'Conocer las aguas cristalinas que tanto amas',
         'Visitar los pueblos blancos que has visto',
@@ -19,6 +20,7 @@ const TravelGallery = () => {
     copenhagen: {
       name: 'Copenhague, Dinamarca 🇩🇰',
       description: 'Ciudad que has explorado',
+      image: '/copenhage.png',
       memories: [
         'Caminar por los canales de Nyhavn que conoces',
         'Visitar el castillo de Rosenborg',
@@ -31,6 +33,7 @@ const TravelGallery = () => {
     rome: {
       name: 'Roma, Italia 🇮🇹',
       description: 'La ciudad eterna que has visitado',
+      image: '/fontana.webp',
       memories: [
         'Admirar el Coliseo que has visto',
         'Hacer un deseo en la Fontana di Trevi',
@@ -43,6 +46,7 @@ const TravelGallery = () => {
     naples: {
       name: 'Nápoles, Italia 🇮🇹',
       description: 'Ciudad que has conocido',
+      image: null, // No tenemos imagen para Nápoles aún
       memories: [
         'Ver el Vesubio desde la bahía',
         'Disfrutar la auténtica pizza napoletana',
@@ -81,7 +85,12 @@ const TravelGallery = () => {
           <div 
             className="destination-image"
             style={{
-              background: `linear-gradient(135deg, ${currentDestination.colors.join(', ')})`
+              backgroundImage: currentDestination.image 
+                ? `url(${currentDestination.image})` 
+                : `linear-gradient(135deg, ${currentDestination.colors.join(', ')})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat'
             }}
           >
             <div className="destination-overlay">
