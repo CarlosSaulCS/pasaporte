@@ -1,7 +1,9 @@
 import { useState } from 'react'
+import { useLanguage } from '../contexts/LanguageContext'
 
 const FormulaOneGuide = () => {
   const [selectedTopic, setSelectedTopic] = useState('basics')
+  const { t } = useLanguage()
 
   const topics = {
     basics: {
@@ -79,8 +81,8 @@ const FormulaOneGuide = () => {
   return (
     <div className="formula-one-guide">
       <div className="f1-header">
-        <h2>🏎️ Fórmula 1 para Evita</h2>
-        <p>Te explico mi pasión para que sea también la tuya</p>
+        <h2>🏎️ {t('f1.title')}</h2>
+        <p>{t('f1.subtitle')}</p>
       </div>
 
       <div className="topic-selector">

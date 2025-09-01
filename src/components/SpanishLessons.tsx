@@ -1,13 +1,15 @@
 import { useState } from 'react'
+import { useLanguage } from '../contexts/LanguageContext'
 
 const SpanishLessons = () => {
   const [currentLesson, setCurrentLesson] = useState(0)
   const [userAnswer, setUserAnswer] = useState('')
   const [showAnswer, setShowAnswer] = useState(false)
+  const { t } = useLanguage()
 
   const lessons = [
     {
-      category: 'Palabras de Afecto',
+      category: t('spanish.category.affection'),
       spanish: 'Me gustas',
       pronunciation: 'Me gus-tas',
       english: 'I like you',
@@ -15,7 +17,7 @@ const SpanishLessons = () => {
       context: 'Una forma bonita de expresar afecto 💕'
     },
     {
-      category: 'Palabras de Afecto',
+      category: t('spanish.category.affection'),
       spanish: 'Eres especial',
       pronunciation: 'E-res es-pe-sial',
       english: 'You are special',
@@ -23,7 +25,7 @@ const SpanishLessons = () => {
       context: 'Lo que realmente pienso de ti'
     },
     {
-      category: 'Palabras de Afecto',
+      category: t('spanish.category.affection'),
       spanish: 'Me haces sonreír',
       pronunciation: 'Me a-ses son-re-ír',
       english: 'You make me smile',
@@ -31,7 +33,7 @@ const SpanishLessons = () => {
       context: 'Cuando pienso en nuestra conversación'
     },
     {
-      category: 'Viajes',
+      category: t('spanish.category.travel'),
       spanish: 'Me gustaría conocerte',
       pronunciation: 'Me gus-ta-rí-a co-no-ser-te',
       english: 'I would like to meet you',
@@ -39,7 +41,7 @@ const SpanishLessons = () => {
       context: 'Mi mayor deseo ahora mismo'
     },
     {
-      category: 'Comida',
+      category: t('spanish.category.food'),
       spanish: 'La comida está deliciosa',
       pronunciation: 'La co-mi-da es-tá de-li-ció-sa',
       english: 'The food is delicious',
@@ -47,7 +49,7 @@ const SpanishLessons = () => {
       context: 'Para cuando probemos comida mexicana juntos'
     },
     {
-      category: 'Día a día',
+      category: t('spanish.category.daily'),
       spanish: 'Hola, ¿cómo estás?',
       pronunciation: 'O-la, ¿có-mo es-tás?',
       english: 'Hello, how are you?',
@@ -77,12 +79,12 @@ const SpanishLessons = () => {
   return (
     <div className="spanish-lessons">
       <div className="lessons-header">
-        <h2>🇪🇸 Aprende Español Conmigo</h2>
-        <p>Te enseño mi idioma con todo el amor del mundo</p>
+        <h2>🇪🇸 {t('spanish.title')}</h2>
+        <p>{t('spanish.subtitle')}</p>
       </div>
 
       <div className="lesson-counter">
-        <span>Lección {currentLesson + 1} de {lessons.length}</span>
+        <span>{t('spanish.lesson')} {currentLesson + 1} de {lessons.length}</span>
         <div className="progress-bar">
           <div 
             className="progress-fill"
@@ -99,7 +101,7 @@ const SpanishLessons = () => {
         <div className="lesson-content">
           <div className="spanish-phrase">
             <h3>{currentLessonData.spanish}</h3>
-            <p className="pronunciation">Pronunciación: {currentLessonData.pronunciation}</p>
+            <p className="pronunciation">{t('spanish.pronunciation')}: {currentLessonData.pronunciation}</p>
           </div>
 
           <div className="translations">
@@ -119,7 +121,7 @@ const SpanishLessons = () => {
         </div>
 
         <div className="practice-section">
-          <h4>Práctica: ¿Cómo se dice en español?</h4>
+          <h4>{t('spanish.practice')}: ¿Cómo se dice en español?</h4>
           <p>Traduce: "{currentLessonData.english}"</p>
           
           <div className="practice-input">
@@ -131,7 +133,7 @@ const SpanishLessons = () => {
               className="answer-input"
             />
             <button onClick={checkAnswer} className="check-btn">
-              Verificar
+              {t('spanish.check')}
             </button>
           </div>
 
@@ -141,9 +143,9 @@ const SpanishLessons = () => {
                 ✅ Respuesta correcta: <strong>{currentLessonData.spanish}</strong>
               </p>
               {userAnswer.toLowerCase().trim() === currentLessonData.spanish.toLowerCase() ? (
-                <p className="feedback success">¡Perfecto! ¡Eres increíble! 🎉</p>
+                <p className="feedback success">{t('spanish.correct')}</p>
               ) : (
-                <p className="feedback encourage">¡Sigue intentando! Cada error es un paso hacia el éxito 💪</p>
+                <p className="feedback encourage">{t('spanish.tryAgain')}</p>
               )}
             </div>
           )}
@@ -152,25 +154,18 @@ const SpanishLessons = () => {
 
       <div className="lesson-navigation">
         <button onClick={prevLesson} className="nav-btn prev">
-          ← Anterior
+          ← {t('spanish.prevLesson')}
         </button>
         <button onClick={nextLesson} className="nav-btn next">
-          Siguiente →
+          {t('spanish.nextLesson')} →
         </button>
       </div>
 
       <div className="motivation-message">
         <div className="motivation-card">
-          <h4>💕 Mensaje especial</h4>
+          <h4>💕 Special message</h4>
           <p>
-            Cada palabra que aprendas en español será un puente entre nosotros. 
-            Me emociona mucho la idea de poder conocerte algún día y escucharte 
-            hablar mi idioma, aunque sea solo unas pocas palabras.
-          </p>
-          <p>
-            Desde México, con mucha paciencia y cariño, 
-            estaré aquí para enseñarte lo que quieras aprender. 
-            Tal vez algún día podamos practicar en persona. 🇲🇽❤️🇪🇪
+            {t('spanish.motivation')}
           </p>
         </div>
       </div>
